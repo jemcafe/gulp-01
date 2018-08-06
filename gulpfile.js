@@ -24,7 +24,7 @@ gulp.task('copyHtml', function(){
     .pipe(gulp.dest('dist'));
 });
 
-// optimaize images
+// optimize images
 gulp.task('imageMin', function(){
   gulp.src('src/images/*')
     .pipe(imagemin())
@@ -59,3 +59,11 @@ gulp.task('default', ['message','copyHtml','imageMin','sass','scripts']);
 // gulp.task('default', function(){
 //   return console.log('Gulp is running');
 // });
+
+// Watch (watches for changes)
+gulp.task('watch', function(){
+  gulp.watch('src/js/*.js', ['scripts']);
+  gulp.watch('src/images/*', ['imageMin']);
+  gulp.watch('src/sass/*.scss', ['sass']);
+  gulp.watch('src/*.html', ['copyHtml']);
+})
